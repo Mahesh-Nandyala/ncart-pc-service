@@ -1,0 +1,159 @@
+openapi: 3.0.4
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  description: |-
+    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+
+    Some useful links:
+    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+  termsOfService: https://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.12
+externalDocs:
+  description: Find out more about Swagger
+  url: https://swagger.io
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+tags:
+  - name: pet
+    description: Everything about your Pets
+    externalDocs:
+      description: Find out more
+      url: https://swagger.io
+  - name: store
+    description: Access to Petstore orders
+    externalDocs:
+      description: Find out more about our store
+      url: https://swagger.io
+  - name: user
+    description: Operations about user
+paths:
+  /persons:
+    post:
+      tags:
+        - pet
+      summary: Add a new pet to the store.
+      description: Add a new pet to the store.
+      operationId: addPet
+      requestBody:
+        description: Create a new pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayloadType'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayloadType'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+    PayloadType:
+      type: object
+      properties:
+        persons:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonType'
+
+    PersonType:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        maritalStatus:
+          type: string
+        gender:
+          type: string
+        dateOfBirth:
+          type: string
+        age:
+          type: string
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressType'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneType'
+        email:
+          $ref: '#/components/schemas/EmailType'
+
+    AddressType:
+      type: object
+      properties:
+        houseNumber:
+          type: string
+        streetAddress:
+          type: string
+        area:
+          type: string
+        district:
+          type: string
+        zipCode:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+
+    PhoneType:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        phoneType:
+          type: string
+          enum:
+            - Primary
+            - Secondary
+            - Default
+            - None
+    EmailType:
+      type: object
+      properties:
+        emailAddress:
+          type: string
+        emailType:
+          type: string
+          enum:
+            - Primary
+            - Secondary
+            - Default
+            - None
+
