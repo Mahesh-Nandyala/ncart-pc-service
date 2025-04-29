@@ -2,6 +2,7 @@ package com.ncart.pc.service.controller;
 
 import com.ncart.pc.service.constants.NCartConstants;
 import com.ncart.pc.service.models.PersonRequestType;
+import com.ncart.pc.service.models.PersonResponseType;
 import com.ncart.pc.service.service.PersonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,7 @@ public class PersonController {
     }
 
     @PostMapping("/persons")
-    ResponseEntity<PersonRequestType> processPersons(
+    ResponseEntity<PersonResponseType> processPersons(
             @RequestHeader(name = NCartConstants.Headers.INTERACTION_ID, required = true) String interactionId,
             @RequestHeader(name = NCartConstants.Headers.MESSAGE_ID, required = true) String messageId,
             @RequestHeader(name = NCartConstants.Headers.USER_ID, required = true) String userId,

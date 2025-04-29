@@ -13,4 +13,22 @@ public class PhoneType implements Serializable {
     @JsonProperty("phoneNumber")
     private String phoneNumber;
 
+    public String getPhoneType() {
+        return phoneType;
+    }
+
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public PhoneType() {
+    }
 }
