@@ -11,22 +11,4 @@ public class ResponseStatusType {
     @JsonProperty("responseStatusCode")
     private String responseStatusCode;
 
-    public String getResponseStatusDescription() {
-        return responseStatusDescription;
-    }
-
-    public void setResponseStatusDescription(String responseStatusDescription) {
-        this.responseStatusDescription = responseStatusDescription;
-    }
-
-    public String getResponseStatusCode() {
-        return responseStatusCode;
-    }
-
-    public void setResponseStatusCode(String responseStatusCode) {
-        this.responseStatusCode = responseStatusCode;
-    }
-
-    public ResponseStatusType() {
-    }
 }
